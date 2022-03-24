@@ -1,8 +1,8 @@
 breed [ hens hen ]
 breed [ roosters rooster ]
-breed [ trees tree]
-breed [ chicks chick]
-breed [ seeds seed]
+breed [ trees tree ]
+breed [ chicks chick ]
+breed [ seeds seed ]
 
 turtles-own [ eat ]
 
@@ -48,7 +48,6 @@ to setup
   create-seeds 40[
       setup-seed
    ]
-
 
 end
 
@@ -156,8 +155,6 @@ to move-hens
     fd 1
   ]
 
-
-
 end
 
 to move-roosters
@@ -202,13 +199,13 @@ end
 GRAPHICS-WINDOW
 355
 10
-873
-529
+1128
+784
 -1
 -1
-10.0
+15.0
 1
-14
+15
 1
 1
 1
