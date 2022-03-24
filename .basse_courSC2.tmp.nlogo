@@ -74,6 +74,7 @@ to go
       set energy energy + 15
     ]
     ask other roosters in-radius (1) [
+
       set energy energy + 15
     ]
   ]
