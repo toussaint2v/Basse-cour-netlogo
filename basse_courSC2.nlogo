@@ -54,9 +54,19 @@ end
 
 to go
   if ticks > 20 [
-    create-seeds 17[
-      setup-seed
-    ]
+    (ifelse
+      count hens > 40[
+        create-seeds 30[
+          setup-seed
+        ]
+      ]
+      count hens > 20[
+        create-seeds 10[
+          setup-seed
+        ]
+      ]
+
+       )
    reset-ticks
   ]
 
@@ -67,14 +77,14 @@ to go
   ask seeds[
     ask other hens in-radius (1) [
       set eat eat + 1
-      set energy energy + 15
+      set energy energy + 18
     ]
     ask other chicks in-radius (1) [
 
-      set energy energy + 15
+      set energy energy + 18
     ]
     ask other roosters in-radius (1) [
-      set energy energy + 15
+      set energy energy + 18
     ]
   ]
 
@@ -121,7 +131,7 @@ end
 
 to setup-hen [col]
   set eat 0
-  set energy 100
+  set energy 150
   set shape "hen"
   set size 2.5
   set color col
@@ -129,7 +139,7 @@ to setup-hen [col]
 end
 
 to setup-rooster [col]
-  set energy 100
+  set energy 200
   set shape "rooster"
   set size 3
   set color col

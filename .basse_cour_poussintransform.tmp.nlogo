@@ -4,7 +4,7 @@ breed [ trees tree ]
 breed [ chicks chick ]
 breed [ seeds seed ]
 
-turtles-own [ eat energy age ]
+turtles-own [ eat energy age chickHenCol ]
 
 
 to setup
@@ -52,15 +52,20 @@ end
 
 
 to go
-  if ticks > 10 [
+  if ticks > 20 [
     (ifelse
-      count hens > 50[
-        create-seeds [
+      count hens > 40[
+        create-seeds 20[
           setup-seed
         ]
       ]
-      [
-        create-seeds 1[
+      count hens > 20[
+        create-seeds 15[
+          setup-seed
+        ]
+      ]
+      count hens > 10[
+        create-seeds 3[
           setup-seed
         ]
       ]
@@ -78,13 +83,13 @@ to go
   ask seeds[
     ask other hens in-radius (1) [
       set eat eat + 1
-      set energy energy + 10
+      set energy energy + 12
     ]
     ask other chicks in-radius (1) [
-      set energy energy + 10
+      set energy energy + 12
     ]
     ask other roosters in-radius (1) [
-      set energy energy + 10
+      set energy energy + 12
     ]
   ]
 
@@ -100,6 +105,7 @@ to go
         set shape "chick"
         set energy 100
         set age 0
+        set chickHenCol
       ]
       set eat 0
     ]
@@ -114,9 +120,9 @@ to go
     ask other seeds in-radius (1) [
       die
     ]
-    if age > 20[
+    if age > 40[
       hatch-hens 1 [
-        new-hen brown xcor ycor
+        new-hen chickHenCol xcor ycor
       ]
       die
     ]
@@ -148,7 +154,7 @@ end
 
 to new-hen [col x y]
   set eat 0
-  set energy 150
+  set energy 160
   set shape "hen"
   set size 2.5
   set color col
